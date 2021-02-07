@@ -1,14 +1,17 @@
 
-console.log("ENVxxxxx: ", process.env.DATABASE_URL, process.env.API_SECRET, process.env.BACKENDLOGINAUTH);
-const backend = process.env.BACKENDLOGINAUTH
-export default {
+
+const  backendLoginAuth = `"${process.env.BACKENDLOGINAUTH}"`
+console.log("ENV SECRET: ",process.env.API_SECRET);
+console.log("ENV DATABASE SCR: ", `"${process.env.DATABASE_URL}"`);
+console.log("ENV BACKEDN : ", backendLoginAuth);
+module.exports = {
   mode: "universal",
   target: 'server',
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || "",
+    title: process.env.npm_package_name || "NAsCodes",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -64,25 +67,25 @@ export default {
   css: [
     // {
     //   rel: "stylesheet",
-    //   href: "~/src/public/build/tailwind.css",
+    //   href: "~/public/build/tailwind.css",
     // },
   ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: "~/src/plugins/vue-carousel", ssr: false },
-    { src: "~/src/plugins/vue-editor.js", ssr: false },
-    { src: "~/src/plugins/input-tag.js", ssr: false },
-    { src: "~/src/plugins/dateFilter.js" },
-    { src: "~/src/plugins/Toaster.js", ssr: false },
-    { src: "~/src/plugins/axios.js" },
-    { src: "~/src/plugins/vue-uploader.js" },
-    { src: "~/src/plugins/vue-inject.js" },
-    { src: "~/src/plugins/vue-removePhoto.js" },
-    { src: "~/src/plugins/vue-deleteItem.js" },
-    { src: "~/src/plugins/vue-successModal.js" },
-    { src: "~/src/plugins/vue-createForm.js" },
+    { src: "~/plugins/vue-carousel", ssr: false },
+    { src: "~/plugins/vue-editor.js", ssr: false },
+    { src: "~/plugins/input-tag.js", ssr: false },
+    { src: "~/plugins/dateFilter.js" },
+    { src: "~/plugins/Toaster.js", ssr: false },
+    { src: "~/plugins/axios.js" },
+    { src: "~/plugins/vue-uploader.js" },
+    { src: "~/plugins/vue-inject.js" },
+    { src: "~/plugins/vue-removePhoto.js" },
+    { src: "~/plugins/vue-deleteItem.js" },
+    { src: "~/plugins/vue-successModal.js" },
+    { src: "~/plugins/vue-createForm.js" },
   ],
   /*
    ** Nuxt.js dev-modules
@@ -111,7 +114,8 @@ export default {
 
    ** Build configuration
    */
-  build: {
+
+   build: {
     extend ( config, { isDev, isClient, isServer } ) {
       if ( isServer ) {
         config.externals = {
@@ -129,17 +133,10 @@ export default {
   //   extend(config, ctx) {},
   // },
   env: {
-  baseUrl: process.env.BASE_URL || `"${process.env.DATABASE_URL}"`,
-   backend ,
+    baseUrl: process.env.BASE_URL || `"${process.env.DATABASE_URL}"`,
+     backendLoginAuth,
     API_KEY: process.env.API_SECRET,
   },
 };
 
-// module.exports = {
-// [...]
-//   build: {
-//     extractCSS: true,
-//     [...]
-//   }
-// [...]
-// }
+
